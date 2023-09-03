@@ -1,0 +1,133 @@
+import 'package:flutter/material.dart';
+
+// TODO: ใส่รหัสนักศึกษาที่ค่าสตริงนี้
+const studentId = '640710144';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    var textTheme = Theme
+        .of(context)
+        .textTheme;
+
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: 20.0,
+            vertical: 20.0,
+          ),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/bg_colorful.jpg"),
+              opacity: 0.6,
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text('Good Morning',
+                  textAlign: TextAlign.center, style: textTheme.headlineMedium),
+              Text(studentId,
+                  textAlign: TextAlign.center,
+                  style: textTheme.headlineSmall!.copyWith(
+                      fontWeight: FontWeight.bold, color: Colors.black87)),
+              Spacer(),
+              _buildQuizView(),
+              Spacer(),
+              //_buildButtonPanel(),
+              SizedBox(height: 20.0),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildQuizView() {
+    return Center(
+      child: Container(
+        width: 450,
+        height: 450,
+        decoration: ShapeDecoration(
+          color: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(32),
+          ),
+        ),
+        child: SafeArea(
+          child: ListView(
+            children: <Widget>[
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Question 1 of 30',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              // Add your quiz content here
+              // Remove the extra comma here
+
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // Call your button function here
+                  _buildAddToCartButton(),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Function to build the "Add to Cart" button
+  Widget _buildAddToCartButton() {
+    return Container(
+      width: 297,
+      height: 60,
+      decoration: ShapeDecoration(
+        color: Colors.greenAccent.shade700,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
+      child: Center(
+        child: Text(
+          "What is the capital of France?",
+          style: TextStyle(
+            fontFamily: 'Sora',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+  
+}
